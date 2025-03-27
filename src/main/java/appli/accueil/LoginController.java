@@ -1,62 +1,63 @@
 package appli.accueil;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
+import appli.StartApplication;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import model.Utilisateur;
+import repository.UtilisateurRepository;
+
+import java.io.IOException;
 
 public class LoginController {
+    @FXML
+    private Label yourmail;
 
     @FXML
-    private Button connexion;
+    private Label yourmdp;
 
     @FXML
-    private TextField email;
+    private Label titre;
 
     @FXML
-    private Label erreur;
+    private Label error;
 
     @FXML
-    private Button inscription;
+    private TextField entermail;
 
     @FXML
-    private PasswordField mdp;
+    private PasswordField entermdp;
+
+    UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
+    @FXML
+    protected void onConnexionButtonClick() {
+
+        System.out.println(entermail.getText());
+        System.out.println(entermdp.getText());
+
+        if (!entermail.getText().isEmpty() && !entermdp.getText().isEmpty()) {
+
+            System.out.println("Connexion !");
+            error.setText("Vous vous êtes conncté");
+        }else{
+            System.out.println("Connexion refusé");
+            error.setText("Erreur . Votre email ou mot de passe est incorrecte !");
+        }
+    }
+
 
     @FXML
-    private Button mdpOublier;
-
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    private Label welcomeText1;
-
-    @FXML
-    void connexionButtonClick(ActionEvent event) {
-
+    protected void onInscriptionButtonClick() throws IOException {
+        StartApplication.changeScene("Accueil/Inscription");
+        error.setText("Redirection....");
     }
 
     @FXML
-    void emailTextField(ActionEvent event) {
+    protected void onmdpoublieButtonClick() {
 
+        error.setText("tu changera pas dsl ;)");
     }
 
-    @FXML
-    void inscriptionButtonClick(ActionEvent event) {
-        Application.changeScene;
-    }
-
-    @FXML
-    void mdpOublierButtonClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void mdpTextField(ActionEvent event) {
-
-    }
 
 }

@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="appli.accueil.InscriptionController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="439.0" prefWidth="229.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.accueil.InscriptionController">
+   <children>
+      <Button id="binscription" fx:id="binscription" layoutX="78.0" layoutY="366.0" mnemonicParsing="false" onAction="#onInscriptionButtonClick" text="Inscription" />
+      <Button fx:id="bretour" layoutX="77.0" layoutY="399.0" mnemonicParsing="false" onAction="#onBretourButtonClick" text="Connexion" />
+      <Label fx:id="inscription" layoutX="78.0" layoutY="28.0" prefHeight="21.0" prefWidth="73.0" text="Inscription">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="nom" layoutX="102.0" layoutY="60.0" text="Nom" />
+      <Label fx:id="prenom" layoutX="95.0" layoutY="112.0" text="Prenom" />
+      <Label fx:id="email" layoutX="101.0" layoutY="171.0" text="Email" />
+      <Label fx:id="mdp" layoutX="79.0" layoutY="232.0" text="Mot De Passe" />
+      <Label fx:id="confirm" layoutX="81.0" layoutY="289.0" text="Confirmation" />
+      <PasswordField fx:id="getmdp" layoutX="41.0" layoutY="256.0" />
+      <PasswordField fx:id="getconfirm" layoutX="41.0" layoutY="306.0" />
+      <TextField fx:id="getemail" layoutX="41.0" layoutY="188.0" />
+      <TextField fx:id="getprenom" layoutX="40.0" layoutY="138.0" />
+      <TextField fx:id="getnom" layoutX="41.0" layoutY="87.0" />
+      <Label fx:id="erreur" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="338.0" prefHeight="21.0" prefWidth="73.0" text="Erreur" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
