@@ -11,6 +11,7 @@ module appli.todolistfx {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires spring.security.crypto;
 
     opens appli to javafx.fxml;
     exports appli;

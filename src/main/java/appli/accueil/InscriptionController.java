@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.Utilisateur;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import repository.UtilisateurRepository;
 
 import java.io.IOException;
@@ -37,7 +38,8 @@ public class InscriptionController {
     @FXML
     private Label erreur;
 
-    UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
+    private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
+    private  BCryptPasswordEncoder;
 
     @FXML
     public void onInscriptionButtonClick(ActionEvent event) throws IOException {

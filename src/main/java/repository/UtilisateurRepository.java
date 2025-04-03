@@ -35,11 +35,6 @@ public class UtilisateurRepository {
         String sql = "SELECT * FROM utilisateurs WHERE email = this.email";
         try {
             PreparedStatement stmt = cnx.prepareStatement(sql);
-            stmt.setString(1, utilisateur.getNom());
-            stmt.setString(2, utilisateur.getPrenom());
-            stmt.setString(3, utilisateur.getEmail());
-            stmt.setString(4, utilisateur.getMdp());
-            stmt.executeUpdate();
             System.out.println("Utilisateur trouver avec succès !");
         } catch (SQLException e) {
             System.out.println("Erreur lors de la recherche de l'utilisateur : " + e.getMessage());
@@ -65,4 +60,22 @@ public class UtilisateurRepository {
             System.out.println("Erreur lors de la modification de l'utilisateur : " + e.getMessage());
         }
     }
+
+    public ArrayList<Utilisateur> getTousLesUtilisateurs() {
+        return new ArrayList<Utilisateur>();
+    }
+
+    public void supprimerUtilisateurParEmail(String email) {
+        String sql = "DELETE FROM `utilisateur` WHERE  email = ?";
+        try {
+            PreparedStatement stmt = cnx.prepareStatement(sql);
+            stmt.executeUpdate();
+            System.out.println("Utilisateur supprimé avec succès !");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la suppression de l'utilisateur : " + e.getMessage());
+        }
+    }
+
+
+
 }

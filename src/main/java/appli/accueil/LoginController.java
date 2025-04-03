@@ -8,9 +8,13 @@ import javafx.scene.control.TextField;
 import model.Utilisateur;
 import repository.UtilisateurRepository;
 
+
 import java.io.IOException;
 
 public class LoginController {
+
+    private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
+
     @FXML
     private Label yourmail;
 
@@ -29,7 +33,6 @@ public class LoginController {
     @FXML
     private PasswordField entermdp;
 
-    UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
     @FXML
     protected void onConnexionButtonClick() {
 
@@ -37,7 +40,8 @@ public class LoginController {
         System.out.println(entermdp.getText());
 
         if (!entermail.getText().isEmpty() && !entermdp.getText().isEmpty()) {
-
+            Utilisateur utilisateur =  new Utilisateur(entermail.getText(),entermail.getText());
+            utilisateurRepository.ajouterUtilisateur(utilisateur);
             System.out.println("Connexion !");
             error.setText("Vous vous êtes conncté");
         }else{
@@ -49,7 +53,7 @@ public class LoginController {
 
     @FXML
     protected void onInscriptionButtonClick() throws IOException {
-        StartApplication.changeScene("Accueil/Inscription");
+        StartApplication.changeScene("accueil/Inscriptionj");
         error.setText("Redirection....");
     }
 
