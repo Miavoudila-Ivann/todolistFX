@@ -62,8 +62,40 @@ public class UtilisateurRepository {
     }
 
     public ArrayList<Utilisateur> getTousLesUtilisateurs() {
-        return new ArrayList<Utilisateur>();
+        ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
+        String sql = "SELECT * FROM utilisateurs"; // La requête pour récupérer tous les utilisateurs
+
+        try {
+            // Préparation de la requête SQL
+            PreparedStatement stmt = cnx.prepareStatement(sql);
+
+            // Exécution de la requête
+            ResultSet rs = stmt.executeQuery();
+
+            // Parcours des résultats pour créer des objets Utilisateur
+            while (rs.next()) {
+                // Création d'un utilisateur à partir des résultats
+                Utilisateur utilisateur = new Utilisateur(
+                        rs.getInt("idUtilisateur"), // Récupération de l'ID
+                        rs.getString("nom"),        // Récupération du nom
+                        rs.getString("prenom"),     // Récupération du prénom
+                        rs.getString("email"),      // Récupération de l'email
+                        rs.getString("mdp")         // Récupération du mot de passe
+                );
+
+                // Ajout de l'utilisateur à la liste
+                utilisateurs.add(utilisateur);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des utilisateurs : " + e.getMessage());
+        }
+
+        return utilisateurs; // Retourne la liste des utilisateurs
     }
+
+
+
 
     public void supprimerUtilisateurParEmail(String email) {
         String sql = "DELETE FROM `utilisateur` WHERE  email = ?";
